@@ -1,0 +1,10 @@
+--cpu ARM7TDMI
+".\timer0_driver.o"
+".\gpio_driver.o"
+".\lcd_driver.o"
+".\startup.o"
+".\lcd_main.o"
+--strict --scatter ".\lpc2148.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\lpc2148.map" -o .\lpc2148.axf

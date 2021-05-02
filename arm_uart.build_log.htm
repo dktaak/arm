@@ -1,0 +1,38 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+C:\Users\Infosys\Desktop\8051\arm\lpc2148.uvproj
+Project File Date:  05/01/2021
+
+<h2>Output:</h2>
+Build target 'LPC2148'
+compiling adc0_main.c...
+linking...
+Program Size: Code=1980 RO-data=16 RW-data=0 ZI-data=1256  
+FromELF: creating hex file...
+".\arm_adc.axf" - 0 Error(s), 0 Warning(s).
+
+-data=16 RW-data=0 ZI-data=1256  
+FromELF: creating hex file...
+".\arm_adc.axf" - 0 Error(s), 0 Warning(s).
+c(25): error:  #127: expected a statement
+  }
+adc0_driver.c(25): warning:  #940-D: missing return statement at end of non-void function "adc0_read"
+  }
+adc0_driver.c(17): warning:  #177-D: variable "val" was declared but never referenced
+        u32 val;
+adc0_driver.c: 3 warnings, 2 errors
+".\arm_adc.axf" - 2 Error(s), 3 Warning(s).
+Target not created
+void uart0_integer(signed int n);
+uart_driver.c: 1 warning, 0 errors
+compiling uart_main.c...
+header.h(34): warning:  #1-D: last line of file ends without a newline
+  extern void uart0_integer(signed int n);
+uart_main.c: 1 warning, 0 errors
+linking...
+Program Size: Code=1636 RO-data=16 RW-data=0 ZI-data=1256  
+FromELF: creating hex file...
+".\arm_uart.axf" - 0 Error(s), 5 Warning(s).

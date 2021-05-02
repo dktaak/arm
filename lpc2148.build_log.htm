@@ -1,0 +1,42 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+C:\Users\Infosys\Desktop\8051\arm\lpc2148.uvproj
+Project File Date:  04/30/2021
+
+<h2>Output:</h2>
+Build target 'LPC2148'
+compiling main_gpio.c...
+main_gpio.c(9): error:  #65: expected a ";"
+                        gpio_write(0,i,1));
+main_gpio.c: 0 warnings, 1 error
+".\arm_lcd.axf" - 1 Error(s), 0 Warning(s).
+Target not created
+Error: Could not load file 'C:\Users\Infosys\Desktop\8051\arm\arm_lcd.axf'. Debugger aborted !
+ created
+ of file ends without a newline
+  }
+lcd_driver.c: 1 warning, 2 errors
+compiling lcd_main.c...
+".\lpc2148.axf" - 2 Error(s), 1 Warning(s).
+Target not created
+d cgram_init();
+lcd_driver.c(16): error:  #20: identifier "RS_C" is undefined
+    RS_C;
+lcd_driver.c(27): error:  #20: identifier "data" is undefined
+                        gpio_write(0,i,((data>>i)&1));
+lcd_driver.c(43): warning:  #1-D: last line of file ends without a newline
+  }
+lcd_driver.c: 2 warnings, 2 errors
+compiling lcd_main.c...
+header.h(23): warning:  #1295-D: Deprecated declaration cgram_init - give arg types
+  extern void cgram_init();
+lcd_main.c(8): warning:  #1-D: last line of file ends without a newline
+  }
+lcd_main.c: 2 warnings, 0 errors
+".\lpc2148.axf" - 2 Error(s), 6 Warning(s).
+Target not created
+ing(s).
+Target not created
