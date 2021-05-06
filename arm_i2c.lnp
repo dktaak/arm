@@ -1,9 +1,10 @@
 --cpu ARM7TDMI
 ".\timer0_driver.o"
 ".\uart_driver.o"
-".\i2c_driver.o"
+".\eeprom-at24c08-driver.o"
+".\i2c0-driver.o"
 ".\startup.o"
-".\eeprom_main.o"
+".\main-i2c-eeprom.o"
 --strict --scatter ".\arm_i2c.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

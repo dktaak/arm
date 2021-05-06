@@ -43,11 +43,11 @@ extern void EINT0_init(void);
 
 //i2c
 
-extern void i2c_init(void);
-extern void i2c_start(void);
-extern void i2c_stop(void);
-extern void i2c_write(u32 data);
-extern u32 i2c_read(void);
-extern void i2c_write_frame(u32 sa,u32 mr,u32 data);
-extern u32 i2c_read_frame(u32 sa,u32 mr);
+extern void I2C_INIT(void);
+extern void I2C_START(void);
+extern void I2C_WRITE(u8 data );
+extern u8 I2C_READ(void);
+extern void I2C_STOP( void );
+extern void write_eeprom_at24c08(u8 sa,u8 mr_addr,u8 data_byte);
+extern u8 read_eeprom_at24c08(u8 sa, u8 mr_addr);
 

@@ -33,12 +33,9 @@ I2C0SCLL = 0x4B ;       //set the low time of i2c clock;
 
 void I2CStart(void)          //Function to initiate a start condition on the I2C bus
 {
-unsigned int status;
-I2C0CONCLR = (I2C_START | I2C_STOP | I2C_SI | I2C_AACK);  // clear all the bits in CONCLR register
-I2C0CONSET = (I2C_ENABLE );            //Enable the I2C interface
-I2C0CONSET = (I2C_START);           //set the STA bit
-status=I2C0CONSET;
-	while(!((status)& I2C_SI));      //wait till interrupt flag becomes set
+	I2C0CONCLR=I2C_SI|I2C_START|I2C_STOP|I2C_AACK;
+	I2C0CONSET = I2C_START; /* Set Start bit for Start condition */
+	while ( (I2C0CONSET & I2C_SI) == 0 ); /* Wait till SI = 1 */
 }
 
 
@@ -52,26 +49,17 @@ I2C0CONSET = I2C_STOP;          //set STOP bit
 
 void I2Csend(unsigned char data)
 {    
-unsigned int status;
-I2C0DAT = data;
-I2C0CONCLR = I2C_START | I2C_STOP ;      // clear start bit for next operation
-I2C0CONCLR = I2C_SI;         // clear interrupt flag
-status=I2C0CONSET;
-	while(!((status)& I2C_SI));        //wait till interrupt flag becomes set
+	I2C0DAT = data; /* Load data to be written into the data register */
+	I2C0CONCLR=I2C_START|I2C_STOP|I2C_SI;
+	while( (I2C0CONSET & I2C_SI) == 0 ); /* Wait till SI = 1 */
 }
 
 unsigned char I2Cget(void)
 {
-unsigned char data;
-unsigned int status;
-
-I2C0CONCLR = I2C_START | I2C_STOP;  
-I2C0CONCLR = I2C_SI;         // clear interrupt flag    
-I2C0CONSET = I2C_AACK;            // send ack to continue further data transfer
-status=I2C0CONSET;
-	while(!((status)& I2C_SI));     //wait till interrupt flag becomes set
-data = I2C0DAT;
-return data;
+  I2C0CONSET=I2C_AACK;
+	I2C0CONCLR=I2C_SI;
+	while( (I2C0CONSET & I2C_SI) == 0 ); /* Wait till SI = 1 */
+	return I2C0DAT;
 }
 
 
