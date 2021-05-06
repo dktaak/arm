@@ -1,9 +1,9 @@
 --cpu ARM7TDMI
 ".\timer0_driver.o"
 ".\uart_driver.o"
-".\adc0_driver.o"
+".\i2c_driver.o"
 ".\startup.o"
-".\adc0_main.o"
+".\eeprom_main.o"
 --strict --scatter ".\arm_adc.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

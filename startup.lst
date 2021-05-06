@@ -469,192 +469,194 @@ ARM Macro Assembler    Page 8
   256 0000003C 00000000 
                        FIQ_Addr
                                DCD              FIQ_Handler
-  257 00000040         
-  258 00000040 EAFFFFFE 
+  257 00000040         ; IMPORT EINT0_Handler
+  258 00000040         ;FIQ_Addr        DCD     EINT0_Handler
+  259 00000040         
+  260 00000040 EAFFFFFE 
                        Undef_Handler
                                B                Undef_Handler
-  259 00000044 EAFFFFFE 
+  261 00000044 EAFFFFFE 
                        SWI_Handler
                                B                SWI_Handler
-  260 00000048 EAFFFFFE 
+  262 00000048 EAFFFFFE 
                        PAbt_Handler
                                B                PAbt_Handler
-  261 0000004C EAFFFFFE 
+  263 0000004C EAFFFFFE 
                        DAbt_Handler
                                B                DAbt_Handler
-  262 00000050 EAFFFFFE 
+  264 00000050 EAFFFFFE 
                        IRQ_Handler
                                B                IRQ_Handler
-  263 00000054 EAFFFFFE 
+  265 00000054 EAFFFFFE 
                        FIQ_Handler
                                B                FIQ_Handler
-  264 00000058         
-  265 00000058         
-  266 00000058         ; Reset Handler
+  266 00000058         
   267 00000058         
-  268 00000058                 EXPORT           Reset_Handler
-  269 00000058         Reset_Handler
-  270 00000058         
-  271 00000058         
-  272 00000058         ; Setup External Memory Pins
-  273 00000058                 IF               :DEF:EXTERNAL_MODE
-  277                          ENDIF
-  278 00000058         
-  279 00000058         
-  280 00000058         ; Setup External Memory Controller
-  281 00000058                 IF               EMC_SETUP <> 0
-  304                          ENDIF                        ; EMC_SETUP
-  305 00000058         
-  306 00000058         
-  307 00000058         ; Setup VPBDIV
-  308 00000058                 IF               VPBDIV_SETUP <> 0
-  312                          ENDIF
-  313 00000058         
-  314 00000058         
-  315 00000058         ; Setup PLL
-  316 00000058                 IF               PLL_SETUP <> 0
-  317 00000058 E59F00A0        LDR              R0, =PLL_BASE
-  318 0000005C E3A010AA        MOV              R1, #0xAA
-  319 00000060 E3A02055        MOV              R2, #0x55
-  320 00000064         
-  321 00000064         ;  Configure and Enable PLL
+  268 00000058         ; Reset Handler
+  269 00000058         
+  270 00000058                 EXPORT           Reset_Handler
+  271 00000058         Reset_Handler
+  272 00000058         
+  273 00000058         
+  274 00000058         ; Setup External Memory Pins
+  275 00000058                 IF               :DEF:EXTERNAL_MODE
+  279                          ENDIF
+  280 00000058         
+  281 00000058         
+  282 00000058         ; Setup External Memory Controller
+  283 00000058                 IF               EMC_SETUP <> 0
+  306                          ENDIF                        ; EMC_SETUP
+  307 00000058         
+  308 00000058         
+  309 00000058         ; Setup VPBDIV
+  310 00000058                 IF               VPBDIV_SETUP <> 0
+  314                          ENDIF
+  315 00000058         
+  316 00000058         
+  317 00000058         ; Setup PLL
+  318 00000058                 IF               PLL_SETUP <> 0
+  319 00000058 E59F00A0        LDR              R0, =PLL_BASE
+  320 0000005C E3A010AA        MOV              R1, #0xAA
+  321 00000060 E3A02055        MOV              R2, #0x55
 
 
 
 ARM Macro Assembler    Page 9 
 
 
-  322 00000064 E3A03024        MOV              R3, #PLLCFG_Val
-  323 00000068 E5803004        STR              R3, [R0, #PLLCFG_OFS]
-  324 0000006C E3A03001        MOV              R3, #PLLCON_PLLE
-  325 00000070 E5803000        STR              R3, [R0, #PLLCON_OFS]
-  326 00000074 E580100C        STR              R1, [R0, #PLLFEED_OFS]
-  327 00000078 E580200C        STR              R2, [R0, #PLLFEED_OFS]
-  328 0000007C         
-  329 0000007C         ;  Wait until PLL Locked
-  330 0000007C E5903008 
+  322 00000064         
+  323 00000064         ;  Configure and Enable PLL
+  324 00000064 E3A03024        MOV              R3, #PLLCFG_Val
+  325 00000068 E5803004        STR              R3, [R0, #PLLCFG_OFS]
+  326 0000006C E3A03001        MOV              R3, #PLLCON_PLLE
+  327 00000070 E5803000        STR              R3, [R0, #PLLCON_OFS]
+  328 00000074 E580100C        STR              R1, [R0, #PLLFEED_OFS]
+  329 00000078 E580200C        STR              R2, [R0, #PLLFEED_OFS]
+  330 0000007C         
+  331 0000007C         ;  Wait until PLL Locked
+  332 0000007C E5903008 
                        PLL_Loop
                                LDR              R3, [R0, #PLLSTAT_OFS]
-  331 00000080 E2133B01        ANDS             R3, R3, #PLLSTAT_PLOCK
-  332 00000084 0AFFFFFC        BEQ              PLL_Loop
-  333 00000088         
-  334 00000088         ;  Switch to PLL Clock
-  335 00000088 E3A03003        MOV              R3, #(PLLCON_PLLE:OR:PLLCON_PLL
+  333 00000080 E2133B01        ANDS             R3, R3, #PLLSTAT_PLOCK
+  334 00000084 0AFFFFFC        BEQ              PLL_Loop
+  335 00000088         
+  336 00000088         ;  Switch to PLL Clock
+  337 00000088 E3A03003        MOV              R3, #(PLLCON_PLLE:OR:PLLCON_PLL
 C)
-  336 0000008C E5803000        STR              R3, [R0, #PLLCON_OFS]
-  337 00000090 E580100C        STR              R1, [R0, #PLLFEED_OFS]
-  338 00000094 E580200C        STR              R2, [R0, #PLLFEED_OFS]
-  339 00000098                 ENDIF                        ; PLL_SETUP
-  340 00000098         
-  341 00000098         
-  342 00000098         ; Setup MAM
-  343 00000098                 IF               MAM_SETUP <> 0
-  344 00000098 E59F0064        LDR              R0, =MAM_BASE
-  345 0000009C E3A01004        MOV              R1, #MAMTIM_Val
-  346 000000A0 E5801004        STR              R1, [R0, #MAMTIM_OFS]
-  347 000000A4 E3A01002        MOV              R1, #MAMCR_Val
-  348 000000A8 E5801000        STR              R1, [R0, #MAMCR_OFS]
-  349 000000AC                 ENDIF                        ; MAM_SETUP
-  350 000000AC         
-  351 000000AC         
-  352 000000AC         ; Memory Mapping (when Interrupt Vectors are in RAM)
-  353 000000AC E01FC040 
+  338 0000008C E5803000        STR              R3, [R0, #PLLCON_OFS]
+  339 00000090 E580100C        STR              R1, [R0, #PLLFEED_OFS]
+  340 00000094 E580200C        STR              R2, [R0, #PLLFEED_OFS]
+  341 00000098                 ENDIF                        ; PLL_SETUP
+  342 00000098         
+  343 00000098         
+  344 00000098         ; Setup MAM
+  345 00000098                 IF               MAM_SETUP <> 0
+  346 00000098 E59F0064        LDR              R0, =MAM_BASE
+  347 0000009C E3A01004        MOV              R1, #MAMTIM_Val
+  348 000000A0 E5801004        STR              R1, [R0, #MAMTIM_OFS]
+  349 000000A4 E3A01002        MOV              R1, #MAMCR_Val
+  350 000000A8 E5801000        STR              R1, [R0, #MAMCR_OFS]
+  351 000000AC                 ENDIF                        ; MAM_SETUP
+  352 000000AC         
+  353 000000AC         
+  354 000000AC         ; Memory Mapping (when Interrupt Vectors are in RAM)
+  355 000000AC E01FC040 
                        MEMMAP  EQU              0xE01FC040  ; Memory Mapping Co
                                                             ntrol
-  354 000000AC                 IF               :DEF:REMAP
-  364                          ENDIF
-  365 000000AC         
-  366 000000AC         
-  367 000000AC         ; Initialise Interrupt System
-  368 000000AC         ;  ...
-  369 000000AC         
-  370 000000AC         
-  371 000000AC         ; Setup Stack for each mode
+  356 000000AC                 IF               :DEF:REMAP
+  366                          ENDIF
+  367 000000AC         
+  368 000000AC         
+  369 000000AC         ; Initialise Interrupt System
+  370 000000AC         ;  ...
+  371 000000AC         
   372 000000AC         
-  373 000000AC E59F0054        LDR              R0, =Stack_Top
-  374 000000B0         
-  375 000000B0         ;  Enter Undefined Instruction Mode and set its Stack Po
+  373 000000AC         ; Setup Stack for each mode
+  374 000000AC         
+  375 000000AC E59F0054        LDR              R0, =Stack_Top
+  376 000000B0         
+  377 000000B0         ;  Enter Undefined Instruction Mode and set its Stack Po
                        inter
-  376 000000B0 E321F0DB        MSR              CPSR_c, #Mode_UND:OR:I_Bit:OR:F
+  378 000000B0 E321F0DB        MSR              CPSR_c, #Mode_UND:OR:I_Bit:OR:F
 _Bit
-  377 000000B4 E1A0D000        MOV              SP, R0
-  378 000000B8 E2400000        SUB              R0, R0, #UND_Stack_Size
-  379 000000BC         
-  380 000000BC         ;  Enter Abort Mode and set its Stack Pointer
-  381 000000BC E321F0D7        MSR              CPSR_c, #Mode_ABT:OR:I_Bit:OR:F
-_Bit
+  379 000000B4 E1A0D000        MOV              SP, R0
+  380 000000B8 E2400000        SUB              R0, R0, #UND_Stack_Size
+  381 000000BC         
+  382 000000BC         ;  Enter Abort Mode and set its Stack Pointer
 
 
 
 ARM Macro Assembler    Page 10 
 
 
-  382 000000C0 E1A0D000        MOV              SP, R0
-  383 000000C4 E2400000        SUB              R0, R0, #ABT_Stack_Size
-  384 000000C8         
-  385 000000C8         ;  Enter FIQ Mode and set its Stack Pointer
-  386 000000C8 E321F0D1        MSR              CPSR_c, #Mode_FIQ:OR:I_Bit:OR:F
+  383 000000BC E321F0D7        MSR              CPSR_c, #Mode_ABT:OR:I_Bit:OR:F
 _Bit
-  387 000000CC E1A0D000        MOV              SP, R0
-  388 000000D0 E2400000        SUB              R0, R0, #FIQ_Stack_Size
-  389 000000D4         
-  390 000000D4         ;  Enter IRQ Mode and set its Stack Pointer
-  391 000000D4 E321F0D2        MSR              CPSR_c, #Mode_IRQ:OR:I_Bit:OR:F
+  384 000000C0 E1A0D000        MOV              SP, R0
+  385 000000C4 E2400000        SUB              R0, R0, #ABT_Stack_Size
+  386 000000C8         
+  387 000000C8         ;  Enter FIQ Mode and set its Stack Pointer
+  388 000000C8 E321F0D1        MSR              CPSR_c, #Mode_FIQ:OR:I_Bit:OR:F
 _Bit
-  392 000000D8 E1A0D000        MOV              SP, R0
-  393 000000DC E2400080        SUB              R0, R0, #IRQ_Stack_Size
-  394 000000E0         
-  395 000000E0         ;  Enter Supervisor Mode and set its Stack Pointer
-  396 000000E0 E321F0D3        MSR              CPSR_c, #Mode_SVC:OR:I_Bit:OR:F
+  389 000000CC E1A0D000        MOV              SP, R0
+  390 000000D0 E2400000        SUB              R0, R0, #FIQ_Stack_Size
+  391 000000D4         
+  392 000000D4         ;  Enter IRQ Mode and set its Stack Pointer
+  393 000000D4 E321F0D2        MSR              CPSR_c, #Mode_IRQ:OR:I_Bit:OR:F
 _Bit
-  397 000000E4 E1A0D000        MOV              SP, R0
-  398 000000E8 E2400008        SUB              R0, R0, #SVC_Stack_Size
-  399 000000EC         
-  400 000000EC         ;  Enter User Mode and set its Stack Pointer
-  401 000000EC E321F010        MSR              CPSR_c, #Mode_USR
-  402 000000F0                 IF               :DEF:__MICROLIB
-  407 000000F0         
-  408 000000F0 E1A0D000        MOV              SP, R0
-  409 000000F4 E24DAB01        SUB              SL, SP, #USR_Stack_Size
-  410 000000F8         
-  411 000000F8                 ENDIF
+  394 000000D8 E1A0D000        MOV              SP, R0
+  395 000000DC E2400080        SUB              R0, R0, #IRQ_Stack_Size
+  396 000000E0         
+  397 000000E0         ;  Enter Supervisor Mode and set its Stack Pointer
+  398 000000E0 E321F0D3        MSR              CPSR_c, #Mode_SVC:OR:I_Bit:OR:F
+_Bit
+  399 000000E4 E1A0D000        MOV              SP, R0
+  400 000000E8 E2400008        SUB              R0, R0, #SVC_Stack_Size
+  401 000000EC         
+  402 000000EC         ;  Enter User Mode and set its Stack Pointer
+  403 000000EC E321F010        MSR              CPSR_c, #Mode_USR
+  404 000000F0                 IF               :DEF:__MICROLIB
+  409 000000F0         
+  410 000000F0 E1A0D000        MOV              SP, R0
+  411 000000F4 E24DAB01        SUB              SL, SP, #USR_Stack_Size
   412 000000F8         
-  413 000000F8         
-  414 000000F8         ; Enter the C code
+  413 000000F8                 ENDIF
+  414 000000F8         
   415 000000F8         
-  416 000000F8                 IMPORT           __main
-  417 000000F8 E59F000C        LDR              R0, =__main
-  418 000000FC E12FFF10        BX               R0
-  419 00000100         
-  420 00000100         
-  421 00000100                 IF               :DEF:__MICROLIB
-  427 00000100         ; User Initial Stack & Heap
-  428 00000100 E01FC080 
+  416 000000F8         ; Enter the C code
+  417 000000F8         
+  418 000000F8                 IMPORT           __main
+  419 000000F8 E59F000C        LDR              R0, =__main
+  420 000000FC E12FFF10        BX               R0
+  421 00000100         
+  422 00000100         
+  423 00000100                 IF               :DEF:__MICROLIB
+  429 00000100         ; User Initial Stack & Heap
+  430 00000100 E01FC080 
               E01FC000 
               00000000 
               00000000         AREA             |.text|, CODE, READONLY
-  429 00000000         
-  430 00000000                 IMPORT           __use_two_region_memory
-  431 00000000                 EXPORT           __user_initial_stackheap
-  432 00000000         __user_initial_stackheap
-  433 00000000         
-  434 00000000 E59F000C        LDR              R0, =  Heap_Mem
-  435 00000004 E59F100C        LDR              R1, =(Stack_Mem + USR_Stack_Siz
+  431 00000000         
+  432 00000000                 IMPORT           __use_two_region_memory
+  433 00000000                 EXPORT           __user_initial_stackheap
+  434 00000000         __user_initial_stackheap
+  435 00000000         
+  436 00000000 E59F000C        LDR              R0, =  Heap_Mem
+  437 00000004 E59F100C        LDR              R1, =(Stack_Mem + USR_Stack_Siz
 e)
-  436 00000008 E59F2004        LDR              R2, = (Heap_Mem +      Heap_Siz
+  438 00000008 E59F2004        LDR              R2, = (Heap_Mem +      Heap_Siz
 e)
-  437 0000000C E59F3008        LDR              R3, = Stack_Mem
-  438 00000010 E12FFF1E        BX               LR
-  439 00000014                 ENDIF
-  440 00000014         
-  441 00000014         
+  439 0000000C E59F3008        LDR              R3, = Stack_Mem
+  440 00000010 E12FFF1E        BX               LR
+  441 00000014                 ENDIF
 
 
 
 ARM Macro Assembler    Page 11 
 
 
-  442 00000014                 END
+  442 00000014         
+  443 00000014         
+  444 00000014                 END
               00000000 
               00000400 
               00000000 
@@ -681,8 +683,8 @@ Symbol: Stack_Mem
    Definitions
       At line 72 in file Startup.s
    Uses
-      At line 435 in file Startup.s
       At line 437 in file Startup.s
+      At line 439 in file Startup.s
 
 Stack_Top 00000488
 
@@ -690,7 +692,7 @@ Symbol: Stack_Top
    Definitions
       At line 75 in file Startup.s
    Uses
-      At line 373 in file Startup.s
+      At line 375 in file Startup.s
 Comment: Stack_Top used once
 __initial_sp 00000400
 
@@ -721,8 +723,8 @@ Symbol: Heap_Mem
    Definitions
       At line 86 in file Startup.s
    Uses
-      At line 434 in file Startup.s
       At line 436 in file Startup.s
+      At line 438 in file Startup.s
 
 __heap_base 00000000
 
@@ -759,10 +761,10 @@ DAbt_Handler 0000004C
 
 Symbol: DAbt_Handler
    Definitions
-      At line 261 in file Startup.s
+      At line 263 in file Startup.s
    Uses
       At line 253 in file Startup.s
-      At line 261 in file Startup.s
+      At line 263 in file Startup.s
 
 FIQ_Addr 0000003C
 
@@ -776,10 +778,10 @@ FIQ_Handler 00000054
 
 Symbol: FIQ_Handler
    Definitions
-      At line 263 in file Startup.s
+      At line 265 in file Startup.s
    Uses
       At line 256 in file Startup.s
-      At line 263 in file Startup.s
+      At line 265 in file Startup.s
 
 IRQ_Addr 00000038
 
@@ -793,10 +795,10 @@ IRQ_Handler 00000050
 
 Symbol: IRQ_Handler
    Definitions
-      At line 262 in file Startup.s
+      At line 264 in file Startup.s
    Uses
       At line 255 in file Startup.s
-      At line 262 in file Startup.s
+      At line 264 in file Startup.s
 
 PAbt_Addr 0000002C
 
@@ -816,18 +818,18 @@ PAbt_Handler 00000048
 
 Symbol: PAbt_Handler
    Definitions
-      At line 260 in file Startup.s
+      At line 262 in file Startup.s
    Uses
       At line 252 in file Startup.s
-      At line 260 in file Startup.s
+      At line 262 in file Startup.s
 
 PLL_Loop 0000007C
 
 Symbol: PLL_Loop
    Definitions
-      At line 330 in file Startup.s
-   Uses
       At line 332 in file Startup.s
+   Uses
+      At line 334 in file Startup.s
 Comment: PLL_Loop used once
 RESET 00000000
 
@@ -849,10 +851,10 @@ Reset_Handler 00000058
 
 Symbol: Reset_Handler
    Definitions
-      At line 269 in file Startup.s
+      At line 271 in file Startup.s
    Uses
       At line 249 in file Startup.s
-      At line 268 in file Startup.s
+      At line 270 in file Startup.s
 
 SWI_Addr 00000028
 
@@ -866,10 +868,10 @@ SWI_Handler 00000044
 
 Symbol: SWI_Handler
    Definitions
-      At line 259 in file Startup.s
+      At line 261 in file Startup.s
    Uses
       At line 251 in file Startup.s
-      At line 259 in file Startup.s
+      At line 261 in file Startup.s
 
 
 
@@ -889,10 +891,10 @@ Undef_Handler 00000040
 
 Symbol: Undef_Handler
    Definitions
-      At line 258 in file Startup.s
+      At line 260 in file Startup.s
    Uses
       At line 250 in file Startup.s
-      At line 258 in file Startup.s
+      At line 260 in file Startup.s
 
 Vectors 00000000
 
@@ -913,7 +915,7 @@ Relocatable symbols
 
 Symbol: .text
    Definitions
-      At line 428 in file Startup.s
+      At line 430 in file Startup.s
    Uses
       None
 Comment: .text unused
@@ -921,9 +923,9 @@ __user_initial_stackheap 00000000
 
 Symbol: __user_initial_stackheap
    Definitions
-      At line 432 in file Startup.s
+      At line 434 in file Startup.s
    Uses
-      At line 431 in file Startup.s
+      At line 433 in file Startup.s
 Comment: __user_initial_stackheap used once
 2 symbols
 
@@ -939,7 +941,7 @@ Symbol: ABT_Stack_Size
       At line 62 in file Startup.s
    Uses
       At line 68 in file Startup.s
-      At line 383 in file Startup.s
+      At line 385 in file Startup.s
 
 BCFG0_OFS 00000000
 
@@ -1063,7 +1065,7 @@ ARM Macro Assembler    Page 3 Alphabetic symbol ordering
 Absolute symbols
 
    Uses
-      At line 281 in file Startup.s
+      At line 283 in file Startup.s
 Comment: EMC_SETUP used once
 FIQ_Stack_Size 00000000
 
@@ -1072,7 +1074,7 @@ Symbol: FIQ_Stack_Size
       At line 63 in file Startup.s
    Uses
       At line 68 in file Startup.s
-      At line 388 in file Startup.s
+      At line 390 in file Startup.s
 
 F_Bit 00000040
 
@@ -1080,11 +1082,11 @@ Symbol: F_Bit
    Definitions
       At line 48 in file Startup.s
    Uses
-      At line 376 in file Startup.s
-      At line 381 in file Startup.s
-      At line 386 in file Startup.s
-      At line 391 in file Startup.s
-      At line 396 in file Startup.s
+      At line 378 in file Startup.s
+      At line 383 in file Startup.s
+      At line 388 in file Startup.s
+      At line 393 in file Startup.s
+      At line 398 in file Startup.s
 
 Heap_Size 00000000
 
@@ -1093,7 +1095,7 @@ Symbol: Heap_Size
       At line 82 in file Startup.s
    Uses
       At line 86 in file Startup.s
-      At line 436 in file Startup.s
+      At line 438 in file Startup.s
 
 IRQ_Stack_Size 00000080
 
@@ -1102,7 +1104,7 @@ Symbol: IRQ_Stack_Size
       At line 64 in file Startup.s
    Uses
       At line 68 in file Startup.s
-      At line 393 in file Startup.s
+      At line 395 in file Startup.s
 
 ISR_Stack_Size 00000088
 
@@ -1118,17 +1120,17 @@ Symbol: I_Bit
    Definitions
       At line 47 in file Startup.s
    Uses
-      At line 376 in file Startup.s
-      At line 381 in file Startup.s
-      At line 386 in file Startup.s
+      At line 378 in file Startup.s
+      At line 383 in file Startup.s
+      At line 388 in file Startup.s
 
 
 
 ARM Macro Assembler    Page 4 Alphabetic symbol ordering
 Absolute symbols
 
-      At line 391 in file Startup.s
-      At line 396 in file Startup.s
+      At line 393 in file Startup.s
+      At line 398 in file Startup.s
 
 MAMCR_OFS 00000000
 
@@ -1136,7 +1138,7 @@ Symbol: MAMCR_OFS
    Definitions
       At line 134 in file Startup.s
    Uses
-      At line 348 in file Startup.s
+      At line 350 in file Startup.s
 Comment: MAMCR_OFS used once
 MAMCR_Val 00000002
 
@@ -1144,7 +1146,7 @@ Symbol: MAMCR_Val
    Definitions
       At line 149 in file Startup.s
    Uses
-      At line 347 in file Startup.s
+      At line 349 in file Startup.s
 Comment: MAMCR_Val used once
 MAMTIM_OFS 00000004
 
@@ -1152,7 +1154,7 @@ Symbol: MAMTIM_OFS
    Definitions
       At line 135 in file Startup.s
    Uses
-      At line 346 in file Startup.s
+      At line 348 in file Startup.s
 Comment: MAMTIM_OFS used once
 MAMTIM_Val 00000004
 
@@ -1160,7 +1162,7 @@ Symbol: MAMTIM_Val
    Definitions
       At line 150 in file Startup.s
    Uses
-      At line 345 in file Startup.s
+      At line 347 in file Startup.s
 Comment: MAMTIM_Val used once
 MAM_BASE E01FC000
 
@@ -1168,7 +1170,7 @@ Symbol: MAM_BASE
    Definitions
       At line 133 in file Startup.s
    Uses
-      At line 344 in file Startup.s
+      At line 346 in file Startup.s
 Comment: MAM_BASE used once
 MAM_SETUP 00000001
 
@@ -1176,13 +1178,13 @@ Symbol: MAM_SETUP
    Definitions
       At line 148 in file Startup.s
    Uses
-      At line 343 in file Startup.s
+      At line 345 in file Startup.s
 Comment: MAM_SETUP used once
 MEMMAP E01FC040
 
 Symbol: MEMMAP
    Definitions
-      At line 353 in file Startup.s
+      At line 355 in file Startup.s
    Uses
       None
 Comment: MEMMAP unused
@@ -1198,7 +1200,7 @@ Symbol: Mode_ABT
    Definitions
       At line 43 in file Startup.s
    Uses
-      At line 381 in file Startup.s
+      At line 383 in file Startup.s
 Comment: Mode_ABT used once
 Mode_FIQ 00000011
 
@@ -1206,7 +1208,7 @@ Symbol: Mode_FIQ
    Definitions
       At line 40 in file Startup.s
    Uses
-      At line 386 in file Startup.s
+      At line 388 in file Startup.s
 Comment: Mode_FIQ used once
 Mode_IRQ 00000012
 
@@ -1214,7 +1216,7 @@ Symbol: Mode_IRQ
    Definitions
       At line 41 in file Startup.s
    Uses
-      At line 391 in file Startup.s
+      At line 393 in file Startup.s
 Comment: Mode_IRQ used once
 Mode_SVC 00000013
 
@@ -1222,7 +1224,7 @@ Symbol: Mode_SVC
    Definitions
       At line 42 in file Startup.s
    Uses
-      At line 396 in file Startup.s
+      At line 398 in file Startup.s
 Comment: Mode_SVC used once
 Mode_SYS 0000001F
 
@@ -1238,7 +1240,7 @@ Symbol: Mode_UND
    Definitions
       At line 44 in file Startup.s
    Uses
-      At line 376 in file Startup.s
+      At line 378 in file Startup.s
 Comment: Mode_UND used once
 Mode_USR 00000010
 
@@ -1246,7 +1248,7 @@ Symbol: Mode_USR
    Definitions
       At line 39 in file Startup.s
    Uses
-      At line 401 in file Startup.s
+      At line 403 in file Startup.s
 Comment: Mode_USR used once
 PINSEL2 E002C014
 
@@ -1284,7 +1286,7 @@ Symbol: PLLCFG_OFS
    Definitions
       At line 111 in file Startup.s
    Uses
-      At line 323 in file Startup.s
+      At line 325 in file Startup.s
 Comment: PLLCFG_OFS used once
 PLLCFG_PSEL 00000060
 
@@ -1300,7 +1302,7 @@ Symbol: PLLCFG_Val
    Definitions
       At line 129 in file Startup.s
    Uses
-      At line 322 in file Startup.s
+      At line 324 in file Startup.s
 Comment: PLLCFG_Val used once
 PLLCON_OFS 00000000
 
@@ -1308,8 +1310,8 @@ Symbol: PLLCON_OFS
    Definitions
       At line 110 in file Startup.s
    Uses
-      At line 325 in file Startup.s
-      At line 336 in file Startup.s
+      At line 327 in file Startup.s
+      At line 338 in file Startup.s
 
 PLLCON_PLLC 00000002
 
@@ -1323,7 +1325,7 @@ ARM Macro Assembler    Page 7 Alphabetic symbol ordering
 Absolute symbols
 
    Uses
-      At line 335 in file Startup.s
+      At line 337 in file Startup.s
 Comment: PLLCON_PLLC used once
 PLLCON_PLLE 00000001
 
@@ -1331,8 +1333,8 @@ Symbol: PLLCON_PLLE
    Definitions
       At line 114 in file Startup.s
    Uses
-      At line 324 in file Startup.s
-      At line 335 in file Startup.s
+      At line 326 in file Startup.s
+      At line 337 in file Startup.s
 
 PLLFEED_OFS 0000000C
 
@@ -1340,10 +1342,10 @@ Symbol: PLLFEED_OFS
    Definitions
       At line 113 in file Startup.s
    Uses
-      At line 326 in file Startup.s
-      At line 327 in file Startup.s
-      At line 337 in file Startup.s
-      At line 338 in file Startup.s
+      At line 328 in file Startup.s
+      At line 329 in file Startup.s
+      At line 339 in file Startup.s
+      At line 340 in file Startup.s
 
 PLLSTAT_OFS 00000008
 
@@ -1351,7 +1353,7 @@ Symbol: PLLSTAT_OFS
    Definitions
       At line 112 in file Startup.s
    Uses
-      At line 330 in file Startup.s
+      At line 332 in file Startup.s
 Comment: PLLSTAT_OFS used once
 PLLSTAT_PLOCK 00000400
 
@@ -1359,7 +1361,7 @@ Symbol: PLLSTAT_PLOCK
    Definitions
       At line 118 in file Startup.s
    Uses
-      At line 331 in file Startup.s
+      At line 333 in file Startup.s
 Comment: PLLSTAT_PLOCK used once
 PLL_BASE E01FC080
 
@@ -1367,7 +1369,7 @@ Symbol: PLL_BASE
    Definitions
       At line 109 in file Startup.s
    Uses
-      At line 317 in file Startup.s
+      At line 319 in file Startup.s
 Comment: PLL_BASE used once
 PLL_SETUP 00000001
 
@@ -1375,7 +1377,7 @@ Symbol: PLL_SETUP
    Definitions
       At line 128 in file Startup.s
    Uses
-      At line 316 in file Startup.s
+      At line 318 in file Startup.s
 Comment: PLL_SETUP used once
 SVC_Stack_Size 00000008
 
@@ -1390,7 +1392,7 @@ Absolute symbols
       At line 61 in file Startup.s
    Uses
       At line 68 in file Startup.s
-      At line 398 in file Startup.s
+      At line 400 in file Startup.s
 
 UND_Stack_Size 00000000
 
@@ -1399,7 +1401,7 @@ Symbol: UND_Stack_Size
       At line 60 in file Startup.s
    Uses
       At line 68 in file Startup.s
-      At line 378 in file Startup.s
+      At line 380 in file Startup.s
 
 USR_Stack_Size 00000400
 
@@ -1408,8 +1410,8 @@ Symbol: USR_Stack_Size
       At line 65 in file Startup.s
    Uses
       At line 72 in file Startup.s
-      At line 409 in file Startup.s
-      At line 435 in file Startup.s
+      At line 411 in file Startup.s
+      At line 437 in file Startup.s
 
 VPBDIV E01FC100
 
@@ -1425,7 +1427,7 @@ Symbol: VPBDIV_SETUP
    Definitions
       At line 104 in file Startup.s
    Uses
-      At line 308 in file Startup.s
+      At line 310 in file Startup.s
 Comment: VPBDIV_SETUP used once
 VPBDIV_Val 00000000
 
@@ -1446,15 +1448,15 @@ __main 00000000
 
 Symbol: __main
    Definitions
-      At line 416 in file Startup.s
+      At line 418 in file Startup.s
    Uses
-      At line 417 in file Startup.s
+      At line 419 in file Startup.s
 Comment: __main used once
 __use_two_region_memory 00000000
 
 Symbol: __use_two_region_memory
    Definitions
-      At line 430 in file Startup.s
+      At line 432 in file Startup.s
    Uses
       None
 Comment: __use_two_region_memory unused

@@ -36,3 +36,18 @@ extern void uart0_integer(signed long int n);
 //ADC
 extern void adc0_init(void);
 extern u32 adc0_read(void);
+
+//interupt
+extern void VIC_init(void);
+extern void EINT0_init(void);
+
+//i2c
+
+extern void i2c_init(void);
+extern void i2c_start(void);
+extern void i2c_stop(void);
+extern void i2c_write(u32 data);
+extern u32 i2c_read(void);
+extern void i2c_write_frame(u32 sa,u32 mr,u32 data);
+extern u32 i2c_read_frame(u32 sa,u32 mr);
+

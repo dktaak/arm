@@ -5,7 +5,7 @@ int main()
 	u32 val;
 	uart0_init(9600);
 	adc0_init();
-	uart0_integer(1234);
+	uart0_integer(1234);	uart0_integer(1234);
 	while(1)
 	{
 		val=adc0_read();

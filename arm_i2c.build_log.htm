@@ -1,0 +1,25 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+C:\Users\Infosys\Desktop\PROJECT\arm\lpc2148.uvproj
+Project File Date:  05/06/2021
+
+<h2>Output:</h2>
+Build target 'LPC2148'
+linking...
+Program Size: Code=2100 RO-data=16 RW-data=0 ZI-data=1256  
+FromELF: creating hex file...
+".\arm_i2c.axf" - 0 Error(s), 0 Warning(s).
+ed char *" is incompatible with parameter of type "char *restrict"
+   sprintf(val,"%d",write_array[i]);    //display read data
+i2c_driver1.c(119): warning:  #167-D: argument of type "unsigned char *" is incompatible with parameter of type "char *restrict"
+   sprintf(val,"%d",read_array[i]);    //display read data
+i2c_driver1.c: 2 warnings, 0 errors
+compiling serial.c...
+assembling Startup.s...
+linking...
+Program Size: Code=2112 RO-data=32 RW-data=16 ZI-data=1272  
+FromELF: creating hex file...
+".\arm_i2c.axf" - 0 Error(s), 2 Warning(s).
