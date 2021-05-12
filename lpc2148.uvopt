@@ -128,7 +128,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGDARM</Key>
-          <Name>(134=-1,-1,-1,-1,0)(135=-1,-1,-1,-1,0)(153=944,117,1265,435,0)(154=808,129,1129,447,0)(108=832,137,979,247,0)(106=-1,-1,-1,-1,0)(105=-1,-1,-1,-1,0)(145=-1,-1,-1,-1,0)(147=-1,-1,-1,-1,0)(80=826,133,1327,533,0)(104=0,234,306,643,0)(100=751,536,1324,708,0)(101=793,55,1366,227,0)(160=-1,-1,-1,-1,0)(161=-1,-1,-1,-1,0)(113=40,214,415,763,0)(112=-1,-1,-1,-1,0)(137=859,250,1330,623,1)(138=881,129,1352,502,0)(117=-1,-1,-1,-1,0)(146=-1,-1,-1,-1,0)(110=828,152,1344,646,0)(111=-1,-1,-1,-1,0)(114=-1,-1,-1,-1,0)(141=889,105,1321,670,0)(142=-1,-1,-1,-1,0)(143=-1,-1,-1,-1,0)(144=-1,-1,-1,-1,0)(115=-1,-1,-1,-1,0)(116=-1,-1,-1,-1,0)</Name>
+          <Name>(134=-1,-1,-1,-1,0)(135=-1,-1,-1,-1,0)(153=944,117,1265,435,0)(154=808,129,1129,447,0)(108=832,137,979,247,0)(106=-1,-1,-1,-1,0)(105=-1,-1,-1,-1,0)(145=-1,-1,-1,-1,0)(147=-1,-1,-1,-1,0)(80=826,133,1327,533,0)(104=0,234,306,643,0)(100=751,536,1324,708,1)(101=793,55,1366,227,0)(160=-1,-1,-1,-1,0)(161=-1,-1,-1,-1,0)(113=40,214,415,763,0)(112=-1,-1,-1,-1,0)(137=859,250,1330,623,0)(138=881,129,1352,502,0)(117=-1,-1,-1,-1,0)(146=-1,-1,-1,-1,0)(110=828,152,1344,646,0)(111=-1,-1,-1,-1,0)(114=-1,-1,-1,-1,0)(141=889,105,1321,670,0)(142=-1,-1,-1,-1,0)(143=-1,-1,-1,-1,0)(144=-1,-1,-1,-1,0)(115=-1,-1,-1,-1,0)(116=-1,-1,-1,-1,0)</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -200,10 +200,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>30</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>1</TopLine>
-      <CurrentLine>18</CurrentLine>
+      <CurrentLine>13</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\timer0_driver.c</PathWithFileName>
       <FilenameWithoutPath>timer0_driver.c</FilenameWithoutPath>
@@ -266,7 +266,7 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>17</TopLine>
+      <TopLine>24</TopLine>
       <CurrentLine>26</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\uart_driver.c</PathWithFileName>
@@ -330,7 +330,7 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>94</TopLine>
+      <TopLine>97</TopLine>
       <CurrentLine>109</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\i2c_driver1.c</PathWithFileName>
@@ -346,7 +346,7 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>11</TopLine>
+      <TopLine>14</TopLine>
       <CurrentLine>24</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\serial.c</PathWithFileName>
@@ -360,7 +360,7 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>2</ColumnNumber>
+      <ColumnNumber>5</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>10</TopLine>
       <CurrentLine>18</CurrentLine>
@@ -434,8 +434,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>21</TopLine>
+      <CurrentLine>27</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\main_gpio.c</PathWithFileName>
       <FilenameWithoutPath>main_gpio.c</FilenameWithoutPath>
@@ -448,10 +448,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>16</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>1</TopLine>
+      <CurrentLine>1</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\lcd_main.c</PathWithFileName>
       <FilenameWithoutPath>lcd_main.c</FilenameWithoutPath>
@@ -544,13 +544,29 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>37</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>4</TopLine>
-      <CurrentLine>16</CurrentLine>
+      <TopLine>6</TopLine>
+      <CurrentLine>17</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\main-i2c-eeprom.c</PathWithFileName>
       <FilenameWithoutPath>main-i2c-eeprom.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>2</GroupNumber>
+      <FileNumber>23</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <Focus>0</Focus>
+      <ColumnNumber>0</ColumnNumber>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <TopLine>1</TopLine>
+      <CurrentLine>2</CurrentLine>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\LED1.C</PathWithFileName>
+      <FilenameWithoutPath>LED1.C</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

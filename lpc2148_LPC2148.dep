@@ -2,35 +2,18 @@ Dependencies for Project 'lpc2148', Target 'LPC2148': (DO NOT MODIFY !)
 F (.\timer0_driver.c)(0x608C26DF)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I C:\Keil_v5_arm\ARM\RV31\INC-I C:\Keil_v5_arm\ARM\CMSIS\Include-I C:\Keil_v5_arm\ARM\Inc\Philips-o .\timer0_driver.o --omf_browse .\timer0_driver.crf --depend .\timer0_driver.d)
 I (header.h)(0x60941226)
 I (C:\Keil_v5_arm\ARM\Inc\Philips\LPC214X.H)(0x532C1500)
-F (.\gpio_driver.c)(0x608C60CF)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I C:\Keil_v5_arm\ARM\RV31\INC-I C:\Keil_v5_arm\ARM\CMSIS\Include-I C:\Keil_v5_arm\ARM\Inc\Philips-o .\gpio_driver.o --omf_browse .\gpio_driver.crf --depend .\gpio_driver.d)
-I (header.h)(0x608D5FB9)
-I (C:\Keil_v5_arm\ARM\Inc\Philips\LPC214X.H)(0x532C1500)
-F (.\lcd_driver.c)(0x608CAE89)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I C:\Keil_v5_arm\ARM\RV31\INC-I C:\Keil_v5_arm\ARM\CMSIS\Include-I C:\Keil_v5_arm\ARM\Inc\Philips-o .\lcd_driver.o --omf_browse .\lcd_driver.crf --depend .\lcd_driver.d)
-I (header.h)(0x608D5FB9)
-I (C:\Keil_v5_arm\ARM\Inc\Philips\LPC214X.H)(0x532C1500)
-F (.\keyboard_driver.c)(0x608D357E)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I C:\Keil_v5_arm\ARM\RV31\INC-I C:\Keil_v5_arm\ARM\CMSIS\Include-I C:\Keil_v5_arm\ARM\Inc\Philips-o .\keyboard_driver.o --omf_browse .\keyboard_driver.crf --depend .\keyboard_driver.d)
-I (header.h)(0x608D356D)
-I (C:\Keil_v5_arm\ARM\Inc\Philips\LPC214X.H)(0x532C1500)
+F (.\gpio_driver.c)(0x608C60CF)()
+F (.\lcd_driver.c)(0x608CAE89)()
+F (.\keyboard_driver.c)(0x608D357E)()
 F (.\uart_driver.c)(0x608D79A8)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I C:\Keil_v5_arm\ARM\RV31\INC-I C:\Keil_v5_arm\ARM\CMSIS\Include-I C:\Keil_v5_arm\ARM\Inc\Philips-o .\uart_driver.o --omf_browse .\uart_driver.crf --depend .\uart_driver.d)
 I (header.h)(0x60941226)
 I (C:\Keil_v5_arm\ARM\Inc\Philips\LPC214X.H)(0x532C1500)
 I (C:\Keil_v5_arm\ARM\ARMCC\include\stdio.h)(0x51C7E87C)
-F (.\adc0_driver.c)(0x6093676F)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I C:\Keil_v5_arm\ARM\RV31\INC-I C:\Keil_v5_arm\ARM\CMSIS\Include-I C:\Keil_v5_arm\ARM\Inc\Philips-o .\adc0_driver.o --omf_browse .\adc0_driver.crf --depend .\adc0_driver.d)
-I (header.h)(0x608D79A8)
-I (C:\Keil_v5_arm\ARM\Inc\Philips\LPC214X.H)(0x532C1500)
-F (.\intrupt_driver.c)(0x60937909)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I C:\Keil_v5_arm\ARM\RV31\INC-I C:\Keil_v5_arm\ARM\CMSIS\Include-I C:\Keil_v5_arm\ARM\Inc\Philips-o .\intrupt_driver.o --omf_browse .\intrupt_driver.crf --depend .\intrupt_driver.d)
-I (header.h)(0x609371AC)
-I (C:\Keil_v5_arm\ARM\Inc\Philips\LPC214X.H)(0x532C1500)
-F (.\i2c_driver.c)(0x6093E89A)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I C:\Keil_v5_arm\ARM\RV31\INC-I C:\Keil_v5_arm\ARM\CMSIS\Include-I C:\Keil_v5_arm\ARM\Inc\Philips-o .\i2c_driver.o --omf_browse .\i2c_driver.crf --depend .\i2c_driver.d)
-I (header.h)(0x6093DEFE)
-I (C:\Keil_v5_arm\ARM\Inc\Philips\LPC214X.H)(0x532C1500)
-F (.\i2c_driver1.c)(0x6094221D)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I C:\Keil_v5_arm\ARM\RV31\INC-I C:\Keil_v5_arm\ARM\CMSIS\Include-I C:\Keil_v5_arm\ARM\Inc\Philips-o .\i2c_driver1.o --omf_browse .\i2c_driver1.crf --depend .\i2c_driver1.d)
-I (C:\Keil_v5_arm\ARM\Inc\Philips\LPC214x.h)(0x532C1500)
-I (C:\Keil_v5_arm\ARM\ARMCC\include\stdio.h)(0x51C7E87C)
-I (serial.h)(0x5AA1F5B4)
-F (.\serial.c)(0x5AB5D23E)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I C:\Keil_v5_arm\ARM\RV31\INC-I C:\Keil_v5_arm\ARM\CMSIS\Include-I C:\Keil_v5_arm\ARM\Inc\Philips-o .\serial.o --omf_browse .\serial.crf --depend .\serial.d)
-I (C:\Keil_v5_arm\ARM\Inc\Philips\lpc214x.h)(0x532C1500)
-I (serial.h)(0x5AA1F5B4)
+F (.\adc0_driver.c)(0x6093676F)()
+F (.\intrupt_driver.c)(0x60937909)()
+F (.\i2c_driver.c)(0x6093E89A)()
+F (.\i2c_driver1.c)(0x6094221D)()
+F (.\serial.c)(0x5AB5D23E)()
 F (.\eeprom-at24c08-driver.c)(0x609426DE)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I C:\Keil_v5_arm\ARM\RV31\INC-I C:\Keil_v5_arm\ARM\CMSIS\Include-I C:\Keil_v5_arm\ARM\Inc\Philips-o .\eeprom-at24c08-driver.o --omf_browse .\eeprom-at24c08-driver.crf --depend .\eeprom-at24c08-driver.d)
 I (header.h)(0x60941226)
 I (C:\Keil_v5_arm\ARM\Inc\Philips\LPC214X.H)(0x532C1500)
@@ -38,30 +21,19 @@ F (.\i2c0-driver.c)(0x60942061)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwo
 I (C:\Keil_v5_arm\ARM\Inc\Philips\LPC214X.H)(0x532C1500)
 I (header.h)(0x60941226)
 F (.\Startup.s)(0x6093A3D8)(--cpu ARM7TDMI --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil_v5_arm\ARM\RV31\INC-I C:\Keil_v5_arm\ARM\CMSIS\Include-I C:\Keil_v5_arm\ARM\Inc\Philips--list .\startup.lst --xref -o .\startup.o --depend .\startup.d)
-F (.\main_timer0.c)(0x608BC52E)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I C:\Keil_v5_arm\ARM\RV31\INC-I C:\Keil_v5_arm\ARM\CMSIS\Include-I C:\Keil_v5_arm\ARM\Inc\Philips-o .\main_timer0.o --omf_browse .\main_timer0.crf --depend .\main_timer0.d)
-I (header.h)(0x608C1765)
+F (.\main_timer0.c)(0x608BC52E)()
+F (.\main_gpio.c)(0x60964A80)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I C:\Keil_v5_arm\ARM\RV31\INC-I C:\Keil_v5_arm\ARM\CMSIS\Include-I C:\Keil_v5_arm\ARM\Inc\Philips-o .\main_gpio.o --omf_browse .\main_gpio.crf --depend .\main_gpio.d)
+I (header.h)(0x60941226)
 I (C:\Keil_v5_arm\ARM\Inc\Philips\LPC214X.H)(0x532C1500)
-F (.\main_gpio.c)(0x608CCB33)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I C:\Keil_v5_arm\ARM\RV31\INC-I C:\Keil_v5_arm\ARM\CMSIS\Include-I C:\Keil_v5_arm\ARM\Inc\Philips-o .\main_gpio.o --omf_browse .\main_gpio.crf --depend .\main_gpio.d)
-I (header.h)(0x608C489B)
-I (C:\Keil_v5_arm\ARM\Inc\Philips\LPC214X.H)(0x532C1500)
-F (.\lcd_main.c)(0x608C5CEB)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I C:\Keil_v5_arm\ARM\RV31\INC-I C:\Keil_v5_arm\ARM\CMSIS\Include-I C:\Keil_v5_arm\ARM\Inc\Philips-o .\lcd_main.o --omf_browse .\lcd_main.crf --depend .\lcd_main.d)
-I (header.h)(0x608C489B)
-I (C:\Keil_v5_arm\ARM\Inc\Philips\LPC214X.H)(0x532C1500)
-F (.\keyboard_main.c)(0x608D356D)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I C:\Keil_v5_arm\ARM\RV31\INC-I C:\Keil_v5_arm\ARM\CMSIS\Include-I C:\Keil_v5_arm\ARM\Inc\Philips-o .\keyboard_main.o --omf_browse .\keyboard_main.crf --depend .\keyboard_main.d)
-I (header.h)(0x608D356D)
-I (C:\Keil_v5_arm\ARM\Inc\Philips\LPC214X.H)(0x532C1500)
-F (.\uart_main.c)(0x608D602A)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I C:\Keil_v5_arm\ARM\RV31\INC-I C:\Keil_v5_arm\ARM\CMSIS\Include-I C:\Keil_v5_arm\ARM\Inc\Philips-o .\uart_main.o --omf_browse .\uart_main.crf --depend .\uart_main.d)
-I (header.h)(0x608D5FB9)
-I (C:\Keil_v5_arm\ARM\Inc\Philips\LPC214X.H)(0x532C1500)
-F (.\adc0_main.c)(0x608E4DC6)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I C:\Keil_v5_arm\ARM\RV31\INC-I C:\Keil_v5_arm\ARM\CMSIS\Include-I C:\Keil_v5_arm\ARM\Inc\Philips-o .\adc0_main.o --omf_browse .\adc0_main.crf --depend .\adc0_main.d)
-I (header.h)(0x608D79A8)
-I (C:\Keil_v5_arm\ARM\Inc\Philips\LPC214X.H)(0x532C1500)
-F (.\interupt_main.c)(0x609371AC)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I C:\Keil_v5_arm\ARM\RV31\INC-I C:\Keil_v5_arm\ARM\CMSIS\Include-I C:\Keil_v5_arm\ARM\Inc\Philips-o .\interupt_main.o --omf_browse .\interupt_main.crf --depend .\interupt_main.d)
-I (header.h)(0x609371AC)
-I (C:\Keil_v5_arm\ARM\Inc\Philips\LPC214X.H)(0x532C1500)
-F (.\eeprom_main.c)(0x6093E1AA)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I C:\Keil_v5_arm\ARM\RV31\INC-I C:\Keil_v5_arm\ARM\CMSIS\Include-I C:\Keil_v5_arm\ARM\Inc\Philips-o .\eeprom_main.o --omf_browse .\eeprom_main.crf --depend .\eeprom_main.d)
-I (header.h)(0x6093DEFE)
-I (C:\Keil_v5_arm\ARM\Inc\Philips\LPC214X.H)(0x532C1500)
+F (.\lcd_main.c)(0x608C5CEB)()
+F (.\keyboard_main.c)(0x608D356D)()
+F (.\uart_main.c)(0x608D602A)()
+F (.\adc0_main.c)(0x608E4DC6)()
+F (.\interupt_main.c)(0x609371AC)()
+F (.\eeprom_main.c)(0x6093E1AA)()
 F (.\main-i2c-eeprom.c)(0x6094247B)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I C:\Keil_v5_arm\ARM\RV31\INC-I C:\Keil_v5_arm\ARM\CMSIS\Include-I C:\Keil_v5_arm\ARM\Inc\Philips-o .\main-i2c-eeprom.o --omf_browse .\main-i2c-eeprom.crf --depend .\main-i2c-eeprom.d)
+I (header.h)(0x60941226)
+I (C:\Keil_v5_arm\ARM\Inc\Philips\LPC214X.H)(0x532C1500)
+F (.\LED1.C)(0x60964CA8)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I C:\Keil_v5_arm\ARM\RV31\INC-I C:\Keil_v5_arm\ARM\CMSIS\Include-I C:\Keil_v5_arm\ARM\Inc\Philips-o .\led1.o --omf_browse .\led1.crf --depend .\led1.d)
 I (header.h)(0x60941226)
 I (C:\Keil_v5_arm\ARM\Inc\Philips\LPC214X.H)(0x532C1500)

@@ -6,8 +6,8 @@
 int main()
 {
 	IODIR0=0X7FF;
-	lcd_init();
-	lcd_data('=');
+//	lcd_init();
+//	lcd_data('=');
 //	int i=0,j=0;
 //	for(i=0;i<8;i++)
 //	{
